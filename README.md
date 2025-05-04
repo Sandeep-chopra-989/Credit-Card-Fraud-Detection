@@ -1,86 +1,88 @@
 # 💳 Credit Card Fraud Detection
 
-This project focuses on detecting fraudulent credit card transactions using various machine learning models and oversampling techniques like SMOTE to handle imbalanced data.
+This project applies various machine learning algorithms to detect fraudulent credit card transactions. Given the **highly imbalanced** nature of fraud detection datasets, techniques like **SMOTE (Synthetic Minority Oversampling Technique)** have been used to balance the classes.
 
 ---
 
 ## 📂 Dataset
 
 - **Source**: [Kaggle - Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
-- **Description**: Contains transactions made by European cardholders in September 2013.
-- **Shape**: 284,807 rows × 31 columns
-- **Class Distribution**: 
-  - Legitimate (0): 284,315
-  - Fraudulent (1): 492
+- **Description**: 
+  - Transactions made by European cardholders in September 2013.
+  - Contains **284,807** transactions, with only **492 fraud cases** (Class 1).
+  - Features are anonymized with PCA (V1-V28), along with `Time`, `Amount`, and `Class`.
 
 ---
 
-## ✅ Objective
-
-To build a machine learning pipeline that:
-- Detects fraudulent transactions with high precision and recall.
-- Handles extreme class imbalance effectively using SMOTE.
-
----
-
-## ⚙️ Technologies Used
-
-- Python (Pandas, NumPy)
-- Scikit-learn
-- imbalanced-learn (SMOTE)
-- Google Colab (for execution)
-
----
-
-## 🧠 ML Models Implemented
+## 🧠 Algorithms Used
 
 - Logistic Regression
-- Random Forest Classifier
 - Decision Tree Classifier
-- K-Nearest Neighbors (KNN)
-- Support Vector Machine (SVM)
-- Gaussian Naive Bayes
+- Random Forest Classifier
+- Naive Bayes (GaussianNB)
+- K-Nearest Neighbors
+- Support Vector Classifier (SVC)
 
 ---
 
-## 🧪 Evaluation Metrics
+## ⚙️ Workflow
 
-- **Confusion Matrix**
-- **Classification Report** (Precision, Recall, F1-Score)
-- **Cross-Validation Scores**
+1. **Import Data**
+2. **Data Preprocessing**
+   - Drop/Handle Nulls (if any)
+   - Feature Scaling using `StandardScaler`
+3. **Train-Test Split**
+4. **Handling Imbalanced Data**
+   - Apply **SMOTE** to oversample the minority (fraud) class
+5. **Model Training**
+   - Train models on balanced data
+6. **Evaluation**
+   - `Classification Report`
+   - `Confusion Matrix`
+   - Cross-validation scores
+
+---
+
+## 📈 Performance Metrics
+
+Evaluation is done using:
+- **Accuracy**
+- **Precision**
+- **Recall** (Important for fraud detection)
+- **F1-Score**
 
 
 ---
 
-## 🔄 Data Processing Pipeline
+## 🔬 Key Learnings
 
-1. Load dataset from Google Drive
-2. Normalize features using `StandardScaler`
-3. Handle class imbalance using `SMOTE`
-4. Split data into train and test sets
-5. Train multiple classifiers and compare results
-6. Evaluate performance using standard classification metrics
+- Importance of handling **imbalanced datasets** in classification problems.
+- SMOTE helps improve minority class prediction without simply duplicating data.
+- Comparative analysis of multiple classifiers shows trade-offs between precision and recall.
 
 ---
 
-## 📊 Results
+## 🛠 Requirements
 
-The best models were evaluated based on recall of the positive (fraudulent) class to reduce the chances of missing fraud:
+Install dependencies using pip:
 
-| Model                | Recall | Precision | F1-Score |
-|---------------------|--------|-----------|----------|
-| Logistic Regression |   --   |     --    |    --    |
-| Random Forest       |   --   |     --    |    --    |
-| Decision Tree       |   --   |     --    |    --    |
+```bash
+pip install pandas scikit-learn imbalanced-learn
+```
 
-*To be filled after model evaluation.*
 
----
+## Run on Google Colab
+This project is Colab-compatible. To access the dataset stored in Google Drive:
+from google.colab import drive
+drive.mount('/content/drive')
 
-## 📎 How to Run
+## 📬 Contact
+Author: Sandeep
+Feel free to connect on LinkedIn or explore other projects.
+linkedin : [https://www.linkedin.com/in/sandeep-chopra-8ba2b7272]
 
-1. Upload the dataset to your Google Drive.
-2. Mount Google Drive in Google Colab:
-   ```python
-   from google.colab import drive
-   drive.mount('/content/drive')
+## 📜 License
+This project is open-source and available under the MIT License.
+
+
+
